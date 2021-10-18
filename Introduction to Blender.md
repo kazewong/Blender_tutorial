@@ -7,7 +7,7 @@ Prerequisite:
 1. Download [blender](https://www.blender.org/download/). The version of blender we use in this tuotrial is 2.93.5
 2. Having a mouse with scroll wheel helps navigating in the blender viewport a lot.
 3. Checkout the github repo for [this tutorial](https://github.com/kazewong/Blender_volume_tutorial). 
-4. If you want to convert your custom .npz into a .vdb, you also need to install pyopenvdb, which requires python version = {3.7,3.8}. Depending on your python version, you can do either pip install pyopenvdb or pyopenvdb-3.8. This could be non-trivial depending what environment you are working in and what access you have. Skip ahead if you cannot get this part and contact me for installation guide afterward.
+4. If you want to convert your custom .npz into a .vdb, you also need to install pyopenvdb, which requires python version = {3.7,3.8}. Depending on your python version, you can do either pip install pyopenvdb or pyopenvdb-3.8. This has only been tested on linux (and confirmed fail on Mac), so it could be non-trivial depending what environment you are working in and what access you have. Skip ahead if you cannot get this part and contact me for installation guide afterward.
 
 Notes:
 1. I capture the screen on a 4K monitor, so the images could look a bit small here. If you have trouble reading it, you can right click the images to open it in a new tab, then zoom into region you want to check.
