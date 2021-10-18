@@ -38,19 +38,23 @@
 <li><span>Download </span><a href="https://www.blender.org/download/" target="_blank" rel="noopener"><span>blender</span></a><span>. The version of blender we use in this tuotrial is 2.93.5</span></li>
 <li><span>Having a mouse with scroll wheel helps navigating in the blender viewport a lot.</span></li>
 <li><span>Checkout the github repo for </span><a href="https://github.com/kazewong/Blender_volume_tutorial" target="_blank" rel="noopener"><span>this tutorial</span></a><span>.</span></li>
-<li><span>Install pyopenvdb, which requires python version &gt;= 3.7. Depending on your python version, you can do either pip install pyopenvdb or pyopenvdb-3.8.</span></li>
+<li><span>If you want to convert your custom .npz into a .vdb, you also need to install pyopenvdb, which requires python version = {3.7,3.8}. Depending on your python version, you can do either pip install pyopenvdb or pyopenvdb-3.8. This could be non-trivial depending what environment you are working in and what access you have.</span></li>
 </ol><p><span>Notes:</span></p><ol>
 <li><span>I capture the screen on a 4K monitor, so the images could look a bit small here. If you have trouble reading it, you can right click the images to open it in a new tab, then zoom into region you want to check.</span></li>
+<li><span>If you open the this manual in .html with a browser, the layout should look better than the one in markdown.</span></li>
 </ol><h1 id="Setting-up-the-workspace" data-id="Setting-up-the-workspace"><a class="anchor hidden-xs" href="#Setting-up-the-workspace" title="Setting-up-the-workspace"><span class="octicon octicon-link"></span></a><span>Setting up the workspace</span></h1><ol>
-<li><span>Set the background of the world to black. You should not see any change in the background color yet.</span><br>
+<li><span>Open blender, follow the quick setup menu. Then choose a general new file.</span></li>
+<li><span>Go to the </span><code>World properties</code><span> tab on the right panel. Set the background of the world to black. You should not see any change in the background color yet.</span><br>
 <img src="https://i.imgur.com/zX2mEi2.png" alt="" loading="lazy"></li>
 <li><span>Change the render engine from Eevee to Cycles. If you have a gpu, you can also change the device to gpu. </span><img src="https://i.imgur.com/ZHPWwDu.png" alt="" loading="lazy"></li>
 <li><span>Go to </span><code>Edit-&gt;Preferences-&gt;Input</code><span>, and enable </span><code>emulate Numpad</code><span>. This will drastically increase your ability to navigate in the viewport without a number pad.</span></li>
 <li><span>Go to </span><code>Edit-&gt;Preferences-&gt;Add-ons</code><span>, search for </span><code>Node Wrangler</code><span> and enable it.</span></li>
-</ol><h1 id="Importing-volume-data-into-blender" data-id="Importing-volume-data-into-blender"><a class="anchor hidden-xs" href="#Importing-volume-data-into-blender" title="Importing-volume-data-into-blender"><span class="octicon octicon-link"></span></a><span>Importing volume data into blender</span></h1><ol>
+</ol><h1 id="Importing-volume-data-into-blender" data-id="Importing-volume-data-into-blender"><a class="anchor hidden-xs" href="#Importing-volume-data-into-blender" title="Importing-volume-data-into-blender"><span class="octicon octicon-link"></span></a><span>Importing volume data into blender</span></h1><ul>
+<li><span>If you have not installed pyopenvdb, skip the first two steps and use the .vdb file provided.</span></li>
+</ul><ol>
 <li><span>Download the datafile ‘IllustrisTNG_128.npz’</span></li>
-<li><span>In shell, run </span><code>python script npz_to_vdb.py</code><span>, you should have the file</span><code>CCA_tutorial_illustrisTNG.vdb</code></li>
-<li><span>Open blender, start with a</span></li>
+<li><span>In a command line shell, run </span><code>python script npz_to_vdb.py</code><span>, you should have the file</span><code>CCA_tutorial_illustrisTNG.vdb</code></li>
+<li><span>Open blender, start with a general new file.</span></li>
 <li><span>Delete the default cube by </span><kbd><span>left click</span></kbd><span> the cube to select it, then press </span><kbd><span>x</span></kbd><span> to delete it.</span></li>
 <li><span>Press </span><kbd><span>SHIFT</span></kbd><span>+</span><kbd><span>a</span></kbd><span> to open the drop down menu for adding object, choose volume-&gt;ImportOpenVDB. Choose the vdb file you just created with the python script. </span><img src="https://i.imgur.com/7Hq71qY.png" alt="" loading="lazy"></li>
 <li><span>You should have something like this </span><img src="https://i.imgur.com/j9Ku16s.jpg" alt="" loading="lazy"></li>
@@ -109,7 +113,7 @@
 <li><span>Left click somewhere else on the screen to deselect the objects. Then choose the camera again, go to the properties on the right and the icon with a crankshaft. Click </span><code>Add Object Constraint</code><span> then choose </span><code>Track To</code><span>. Then pick the </span><code>Target</code><span> to be the </span><code>Empty</code><span>.</span><br>
 <img src="https://i.imgur.com/wyZqrgw.png" alt="" loading="lazy"><br>
 <img src="https://i.imgur.com/YoaueLk.png" alt="" loading="lazy"></li>
-<li><span>Finally, select the circle we created, go to the properties tab with a curve on it, go to </span><code>Path Animation</code><span> field, and set </span><code>Frames</code><span> to 360.</span><br>
+<li><span>Finally, select the circle we created, go to the properties tab with a curve on it, go to </span><code>Path Animation</code><span> field, and set </span><code>Frames</code><span> to 360. This will render 360 frames for the final video. It will take around</span><br>
 <img src="https://i.imgur.com/V8O1idS.png" alt="" loading="lazy"></li>
 <li><span>Now go to the time sliders at the bottome, drag the time sliders around to see the camera moves. You can also go to the camera view with </span><kbd><span>`</span></kbd><span>.</span><br>
 <img src="https://i.imgur.com/FgAKip6.png" alt="" loading="lazy"></li>
@@ -147,7 +151,7 @@
 <li><a href="#Setting-up-the-workspace" title="Setting up the workspace">Setting up the workspace</a></li>
 <li><a href="#Importing-volume-data-into-blender" title="Importing volume data into blender">Importing volume data into blender</a></li>
 <li><a href="#Basic-navigation" title="Basic navigation">Basic navigation</a></li>
-<li class=""><a href="#Basic-shading" title="Basic shading">Basic shading</a><ul class="nav">
+<li><a href="#Basic-shading" title="Basic shading">Basic shading</a><ul class="nav">
 <li><a href="#Emission-strength" title="Emission strength">Emission strength</a></li>
 <li><a href="#Color" title="Color">Color</a></li>
 <li><a href="#Absorption" title="Absorption">Absorption</a></li>
@@ -166,7 +170,7 @@
 <li><a href="#Setting-up-the-workspace" title="Setting up the workspace">Setting up the workspace</a></li>
 <li><a href="#Importing-volume-data-into-blender" title="Importing volume data into blender">Importing volume data into blender</a></li>
 <li><a href="#Basic-navigation" title="Basic navigation">Basic navigation</a></li>
-<li class=""><a href="#Basic-shading" title="Basic shading">Basic shading</a><ul class="nav">
+<li><a href="#Basic-shading" title="Basic shading">Basic shading</a><ul class="nav">
 <li><a href="#Emission-strength" title="Emission strength">Emission strength</a></li>
 <li><a href="#Color" title="Color">Color</a></li>
 <li><a href="#Absorption" title="Absorption">Absorption</a></li>

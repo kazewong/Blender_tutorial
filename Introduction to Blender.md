@@ -7,27 +7,28 @@ Prerequisite:
 1. Download [blender](https://www.blender.org/download/). The version of blender we use in this tuotrial is 2.93.5
 2. Having a mouse with scroll wheel helps navigating in the blender viewport a lot.
 3. Checkout the github repo for [this tutorial](https://github.com/kazewong/Blender_volume_tutorial). 
-4. Install pyopenvdb, which requires python version >= 3.7. Depending on your python version, you can do either pip install pyopenvdb or pyopenvdb-3.8. 
+4. If you want to convert your custom .npz into a .vdb, you also need to install pyopenvdb, which requires python version = {3.7,3.8}. Depending on your python version, you can do either pip install pyopenvdb or pyopenvdb-3.8. This could be non-trivial depending what environment you are working in and what access you have.
 
 Notes:
 1. I capture the screen on a 4K monitor, so the images could look a bit small here. If you have trouble reading it, you can right click the images to open it in a new tab, then zoom into region you want to check.
+2. If you open the this manual in .html with a browser, the layout should look better than the one in markdown.
 
 # Setting up the workspace
 
-1. Set the background of the world to black. You should not see any change in the background color yet. 
+1. Open blender, follow the quick setup menu. Then choose a general new file.
+2. Go to the `World properties` tab on the right panel. Set the background of the world to black. You should not see any change in the background color yet. 
 ![](https://i.imgur.com/zX2mEi2.png)
 2. Change the render engine from Eevee to Cycles. If you have a gpu, you can also change the device to gpu. ![](https://i.imgur.com/ZHPWwDu.png)
 3. Go to `Edit->Preferences->Input`, and enable `emulate Numpad`. This will drastically increase your ability to navigate in the viewport without a number pad.
 4. Go to `Edit->Preferences->Add-ons`, search for `Node Wrangler` and enable it.
 
-
-
-
 # Importing volume data into blender
 
+* If you have not installed pyopenvdb, skip the first two steps and use the .vdb file provided.
+
 1. Download the datafile 'IllustrisTNG_128.npz'
-2. In shell, run `python script npz_to_vdb.py`, you should have the file`CCA_tutorial_illustrisTNG.vdb`
-3. Open blender, start with a 
+2. In a command line shell, run `python script npz_to_vdb.py`, you should have the file`CCA_tutorial_illustrisTNG.vdb`
+3. Open blender, start with a general new file.
 4. Delete the default cube by <kbd>left click</kbd> the cube to select it, then press <kbd>x</kbd> to delete it.
 5. Press <kbd>SHIFT</kbd>+<kbd>a</kbd> to open the drop down menu for adding object, choose volume->ImportOpenVDB. Choose the vdb file you just created with the python script. ![](https://i.imgur.com/7Hq71qY.png) 
 6. You should have something like this ![](https://i.imgur.com/j9Ku16s.jpg)
@@ -114,7 +115,7 @@ The next thing we will work on is to move a camera around the volume to create a
 6. Left click somewhere else on the screen to deselect the objects. Then choose the camera again, go to the properties on the right and the icon with a crankshaft. Click `Add Object Constraint` then choose `Track To`. Then pick the `Target` to be the `Empty`.
 ![](https://i.imgur.com/wyZqrgw.png)
 ![](https://i.imgur.com/YoaueLk.png)
-7. Finally, select the circle we created, go to the properties tab with a curve on it, go to `Path Animation` field, and set `Frames` to 360.
+7. Finally, select the circle we created, go to the properties tab with a curve on it, go to `Path Animation` field, and set `Frames` to 360. This will render 360 frames for the final video. It will take around 
 ![](https://i.imgur.com/V8O1idS.png)
 8. Now go to the time sliders at the bottome, drag the time sliders around to see the camera moves. You can also go to the camera view with <kbd>`</kbd>.
 ![](https://i.imgur.com/FgAKip6.png)
