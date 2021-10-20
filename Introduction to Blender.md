@@ -135,3 +135,4 @@ We will let the a camera goes in circle
 6. Now go to the properties tab on the right and choose the render tab again. Change file format to `FFmpeg video`. Open the `Encoding` menu, choose the container to be `MPEG-4`, the `Output Quality` to be `Perceptually Lossless`, and `Encoding Speed` to be `Slowest`.![](https://i.imgur.com/8niauHn.png)
 7. `Render->Render Animation` again and you should have the video!
 
+{%youtube EwmTyE0LVUs %}
