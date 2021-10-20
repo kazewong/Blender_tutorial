@@ -16,9 +16,9 @@ Notes:
 # Setting up the workspace
 
 1. Open blender, follow the quick setup menu. Then choose a general new file.
-2. Go to the `World properties` tab on the right panel. Set the background of the world to black. You should not see any change in the background color yet. 
+2. Go to the `World properties` tab on the right panel (Click the red Earth icon). Set the background of the world to black. You should not see any change in the background color yet. 
 ![](https://i.imgur.com/zX2mEi2.png)
-2. Change the render engine from Eevee to Cycles. If you have a gpu, you can also change the device to gpu. ![](https://i.imgur.com/ZHPWwDu.png)
+2. Change the render engine from Eevee to Cycles (Click the Camera icon). If you have a gpu, you can also change the device to gpu. ![](https://i.imgur.com/ZHPWwDu.png)
 3. Go to `Edit->Preferences->Input`, and enable `emulate Numpad`. This will drastically increase your ability to navigate in the viewport without a number pad.
 4. Go to `Edit->Preferences->Add-ons`, search for `Node Wrangler` and enable it.
 
