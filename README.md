@@ -2,7 +2,7 @@
 
 Reference material and demo file for visualizing a cosmological simualtion in Blender.
 
-`Introduction to blender.html/.md` are the manual you should follow for going through the tutorial.
+`Introduction to blender.html/.md` are the manual you should follow for going through the tutorial. I suggest you use a browser to open the .html file for best experience.
 
 `IllustrisTNG_128.npz` contains 3 numpy arrays from the IllustrisTNG simulation, each with shape (128,128,128).
 
