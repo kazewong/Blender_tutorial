@@ -7,8 +7,7 @@ def Scale_data(data):
 data = np.load('./IllustrisTNG_128.npz')
 output_name = 'CCA_tutorial_illustrisTNG.vdb'
 
-
-N_res = 128
+N_res = 256
 Mgas = Scale_data(data['Mgas'])
 T = Scale_data(data['T'])
 Z = Scale_data(data['Z'])
