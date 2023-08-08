@@ -1,11 +1,15 @@
 import numpy as np
-import h5py
-import pyopenvdb as vdb
 import os
 ### PUT THE athena_read.py in your path
 import athena_read
 
 path = '/mnt/home/wwong/ceph/Simulations/Athena/blast3d'
+
+rho = []
+press = []
+vel1 = []
+vel2 = []
+vel3 = []
 
 for index in range(11):
 	data_prim = athena_read.athdf('/mnt/home/wwong/ceph/Simulations/Athena/blast3d/Blast.out1.'+str(index).zfill(5)+'.athdf')
@@ -15,11 +19,13 @@ for index in range(11):
 	xv = data_prim['x1v'] # x pos of cell centers
 	yv = data_prim['x2v'] # y pos of cell centers
 	zv = data_prim['x3v'] # z pos of cell centers
-	rho = data_prim['rho'] # density at cell center
-	press = data_prim['press'] # pressure at cell center
-	vel1 = data_prim['vel1'] # x velocity at cell center
-	vel2 = data_prim['vel2'] # y velocity at cell center
-	vel3 = data_prim['vel3'] # z velocity at cell center
+	rho.append(data_prim['rho']) # density at cell center
+	press.append(data_prim['press']) # pressure at cell center
+	vel1.append(data_prim['vel1']) # x velocity at cell center
+	vel2.append(data_prim['vel2']) # y velocity at cell center
+	vel3.append(data_prim['vel3']) # z velocity at cell center
+
+np.savez('blast3d.npz', x=x, y=y, z=z, xv=xv, yv=yv, zv=zv, rho=rho, press=press, vel1=vel1, vel2=vel2, vel3=vel3)
 
 # 	output_dir = '/mnt/home/wwong/ceph/Visualization/Turbulance/vdb/'
 # 	N_res = 512
