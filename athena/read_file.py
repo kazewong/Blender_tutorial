@@ -9,13 +9,14 @@ path = '/mnt/home/wwong/ceph/Simulations/Athena/blast3d/Blast.out1.'
 #path = '/mnt/home/wwong/ceph/Simulations/Athena/collapse/Collapse.out2.'
 output_name = '/mnt/home/wwong/ceph/Visualization/Tutorial/Athena/collapse'
 N_res = 128
+N_frames = 51
 
 field = ['rho', 'press', 'vel1', 'vel2', 'vel3']
 data = {}
 for name in field:
 	data[name] = []
 
-for index in range(51):
+for index in range(N_frames):
 	data_prim = athena_read.athdf(path+str(index).zfill(5)+'.athdf')
 	data['rho'].append(data_prim['rho']) # density at cell center
 	data['press'].append(data_prim['press']) # pressure at cell center
