@@ -1,59 +1,40 @@
 import numpy as np
-import os
+import sys
+sys.path.append('/mnt/sw/nix/store/6plcgbnkn9w8nf1y0dzmjs1jbjbzi4ma-openvdb-10.0.0/lib64/python3.9/site-packages') # Put your path to openvdb here
 ### PUT THE athena_read.py in your path
 import athena_read
+import pyopenvdb as vdb
 
-path = '/mnt/home/wwong/ceph/Simulations/Athena/blast3d'
+path = '/mnt/home/wwong/ceph/Simulations/Athena/collapse'
+output_name = '/mnt/home/wwong/ceph/Visualization/Tutorial/Athena/collapse'
+N_res = 128
 
-rho = []
-press = []
-vel1 = []
-vel2 = []
-vel3 = []
+field = ['rho', 'press', 'vel1', 'vel2', 'vel3']
+data = {}
+for name in field:
+	data[name] = []
 
-for index in range(11):
-	data_prim = athena_read.athdf('/mnt/home/wwong/ceph/Simulations/Athena/blast3d/Blast.out1.'+str(index).zfill(5)+'.athdf')
+for index in range(51):
+	# data_prim = athena_read.athdf('/mnt/home/wwong/ceph/Simulations/Athena/blast3d/Blast.out1.'+str(index).zfill(5)+'.athdf')
+	data_prim = athena_read.athdf('/mnt/home/wwong/ceph/Simulations/Athena/collapse/Collapse.out2.'+str(index).zfill(5)+'.athdf')
 	x = data_prim['x1f'] # x pos of cell faces
 	y = data_prim['x2f'] # y pos of cell faces
 	z = data_prim['x3f'] # z pos of cell faces
 	xv = data_prim['x1v'] # x pos of cell centers
 	yv = data_prim['x2v'] # y pos of cell centers
 	zv = data_prim['x3v'] # z pos of cell centers
-	rho.append(data_prim['rho']) # density at cell center
-	press.append(data_prim['press']) # pressure at cell center
-	vel1.append(data_prim['vel1']) # x velocity at cell center
-	vel2.append(data_prim['vel2']) # y velocity at cell center
-	vel3.append(data_prim['vel3']) # z velocity at cell center
+	data['rho'].append(data_prim['rho']) # density at cell center
+	data['press'].append(data_prim['press']) # pressure at cell center
+	data['vel1'].append(data_prim['vel1']) # x velocity at cell center
+	data['vel2'].append(data_prim['vel2']) # y velocity at cell center
+	data['vel3'].append(data_prim['vel3']) # z velocity at cell center
 
-np.savez('blast3d.npz', x=x, y=y, z=z, xv=xv, yv=yv, zv=zv, rho=rho, press=press, vel1=vel1, vel2=vel2, vel3=vel3)
+for i in range(len(data['rho'])):
+	dataCube = []
 
-# 	output_dir = '/mnt/home/wwong/ceph/Visualization/Turbulance/vdb/'
-# 	N_res = 512
-# 	output_tag = 'mixing_layer_chi100_Mach05_'+str(N_res)+'.'+str(index).zfill(5)+'.vdb'
-	
-	
-# 	dataCube = []
-# 	density = rho#normalize_data(rho)
-# 	velocity = np.array([vel1,vel2,vel3])
-# 	velocity = velocity#normalize_data(velocity)
-# #	velocity = velocity - np.median(velocity)
-	
-# 	dataCube = []
-	
-# 	scale_factor = 1
-	
-# 	dataCube.append(vdb.FloatGrid())
-# 	dataCube[-1].copyFromArray(density)
-# 	dataCube[-1].name = 'density'
-# 	dataCube[-1].transform = vdb.createLinearTransform(voxelSize=scale_factor/(N_res))
-# 	maskCube = vdb.FloatGrid()
-	
-# 	for i in range(3):
-# 	    dataCube.append(vdb.FloatGrid())
-# 	    dataCube[-1].copyFromArray(velocity[i])
-# 	    dataCube[-1].name = 'velocity'+str(i)
-# 	    dataCube[-1].transform = vdb.createLinearTransform(voxelSize=scale_factor/(N_res))
-	
-	
-# 	output_name = output_dir+output_tag
-# 	vdb.write(output_name, grids=dataCube)
+	for name in field:
+		dataCube.append(vdb.FloatGrid())
+		dataCube[-1].copyFromArray(data[name][i])
+		dataCube[-1].name = name
+		dataCube[-1].transform = vdb.createLinearTransform(voxelSize=1/(N_res))
+		vdb.write(output_name+'_'+str(i)+'.vdb', grids=dataCube)
