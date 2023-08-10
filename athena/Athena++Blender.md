@@ -17,7 +17,7 @@ Prerequisite:
 As a tutorial, we will only run with low res simulation that is easy to run and process. Scaling up shouldn't be to different from what we do here.
 1. Run in the root athena directory `python configure.py --prob blast -b --flux hlld -mpi -hdf5`
 2. Compile the code with `make clean; make -j4`
-3. Change `tlim` to `5` in `inputs/mhd/athinput.blast`, this should gives 51 frames for our video.
+3. Change `tlim` to `5` in `inputs/mhd/athinput.blast`, this should gives 51 frames for our video.'
 5. Run the code with `mpiexec -n 8 ./bin/athena -i ./inputs/mhd/athinput.blast -d ./data/blast3d/`
 
 

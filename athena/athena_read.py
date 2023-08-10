@@ -450,7 +450,7 @@ def athdf(filename, raw=False, data=None, quantities=None, dtype=None, level=Non
             x1_rat = f.attrs['RootGridX1'][2]
             x2_rat = f.attrs['RootGridX2'][2]
             x3_rat = f.attrs['RootGridX3'][2]
-            if (coord == 'cartesian' or coord == 'minkowski' or coord == 'tilted'
+            if (coord == 'cartesian' or coord == 'minkowski' or coord == 'tilted' or coord == 'gr_user'
                     or coord == 'sinusoidal'):
                 if ((nx1 == 1 or x1_rat == 1.0) and (nx2 == 1 or x2_rat == 1.0)
                         and (nx3 == 1 or x3_rat == 1.0)):
