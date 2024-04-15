@@ -1,7 +1,7 @@
 data
 *.dat
 *.out
-protoplenetary_disk/processed_disk.npz
-protoplenetary_disk/processed_disk.vdb
-protoplenetary_disk/protoplentary_disk.blend1
+*.npz
+*.vdb
+*.blend1
 *.pyc
