@@ -45,8 +45,7 @@ z_to_d,d_to_z,z_to_H = auxint(zb)
 path_halos = './fiducial_100_halos.dat'
 
 x_g, y_g, z_g= np.loadtxt(path_halos, skiprows=5, usecols=(1,2,3), unpack=True)
-
-
+vx_g, vy_g, vz_g = np.loadtxt(path_halos, skiprows=5, usecols=(4,5,6), unpack=True)
 
 
 ######################################################################################
@@ -56,4 +55,4 @@ path_voids = './untrimmed_centers_central_Quijote_halos_fiducial_100_z0.00.out'
 
 x_v, y_v, z_v, volume_normalized_v, radius_v, redshift_v,volume_mpc3_v,void_ID,density_contrast_v,num_part_v,parent_ID_v,tree_level_v,num_children_v,central_density_v = np.loadtxt(path_voids, skiprows=1, usecols=(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,13), unpack=True)
 
-np.savez('processed_data', x_g=x_g/1000, y_g=y_g/1000, z_g=z_g/1000, x_v=x_v/1000, y_v=y_v/1000, z_v=z_v/1000, radius_v=radius_v/1000)
+np.savez('processed_data', x_g=x_g/1000, y_g=y_g/1000, z_g=z_g/1000, x_v=x_v/1000, y_v=y_v/1000, z_v=z_v/1000, radius_v=radius_v/1000, vx_g=vx_g/1000, vy_g=vy_g/1000, vz_g=vz_g/1000)
